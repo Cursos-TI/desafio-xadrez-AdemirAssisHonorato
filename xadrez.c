@@ -1,32 +1,84 @@
 #include <stdio.h>
 
 //ADEMIR DE ASSIS DA SILVA GONÇALVES JUNIOR CURSO: ENGENHARIA DE SOFTWARE
-//DESAFIO XADREZ NIVEL NOVATO
+//DESAFIO XADREZ NIVEL MESTRE
 
 /*
-
-*DESAFIO NOVATO
-Torre: Move-se em linha reta horizontalmente ou verticalmente. Seu programa deverá simular o movimento da Torre cinco casas para a direita.
- 
-Bispo: Move-se na diagonal. Seu programa deverá simular o movimento do Bispo cinco casas na diagonal para cima e à direita. Para representar a diagonal, você imprimirá a combinação de duas direções a cada casa (ex: "Cima, Direita").
- 
-Rainha: Move-se em todas as direções. Seu programa deverá simular o movimento da Rainha oito casas para a esquerda.
-
-*DESAFIO AVENTUREIRO
 O que você vai fazer
 
-Você deverá implementar, no mesmo programa em C do desafio anterior, a lógica para o movimento do Cavalo. O Cavalo se move
-duas casas em uma direção (horizontal ou vertical) e depois uma casa perpendicularmente, formando um "L". Para este desafio,
-o Cavalo deverá se mover duas casas para baixo e uma casa para a esquerda. Você precisará usar pelo menos dois loops aninhados,
-sendo um deles obrigatoriamente um loop for. O outro loop pode ser while ou do-while, à sua escolha. Assim como nas outras peças,
-você imprimirá a direção do movimento a cada casa percorrida.
+
+Você deverá modificar o programa em C, que já contém a movimentação da Torre, Bispo, Rainha e Cavalo, realizando as seguintes alterações:
+
+ 
+
+Recursividade: Substitua os loops simples que controlam os
+movimentos da Torre, Bispo e Rainha por funções recursivas.
+Cada função recursiva deverá simular o movimento da respectiva
+peça, imprimindo a direção correta a cada casa.
+ 
+Loops Complexos para o Cavalo: Aprimore a movimentação do Cavalo,
+utilizando loops aninhados com múltiplas variáveis e/ou condições.
+Você pode usar continue e break para controlar o fluxo do loop
+de forma mais precisa. O movimento do Cavalo agora será para cima
+e para a direita, em "L" (duas casas para cima e uma para a direita).
+ 
+Bispo com Loops Aninhados: O Bispo deve ser implementado com
+recursividade, e também com loops aninhados, utilizando o loop
+mais externo para o movimento vertical, e o mais interno para o
+movimento horizontal.
 */
+
+void moverTorre(int casas){
+    if(casas > 0){
+        printf("Direita. \n");
+        moverTorre(casas - 1);
+    }
+
+}
+
+void moverBispo(int casas){
+    if(casas > 0){
+        printf("Cima, Direita. \n");
+        moverBispo(casas -1);
+    }
+
+}
+
+void moverRainha(int casas){
+    if (casas > 0){
+        printf("Esquerda. \n");
+        moverRainha(casas - 1);
+    }
+    
+}
+
+void moverCavalo(int casas){
+    int i;
+
+    if (casas > 0){
+    
+        for (int c = 1; c <= 1; c++)
+            {
+                while (i <= 2)
+                {
+                    printf("Cima\n");
+                    i++;
+                }
+                
+                printf("Direita\n");
+            }
+            
+    moverCavalo(casas -1);
+    }
+
+}
+
 
 int main(){
 
-    int i = 1, b = 1, r = 1, escolha;
+    int escolha;
 
-    printf("Qual peça o jogador deseja Moovimentar?\n");
+    printf("Qual peça o jogador deseja Movimentar?\n");
     printf("1.Torre\n");
     printf("2.Bispo\n");
     printf("3.Rainha\n");
@@ -38,47 +90,26 @@ int main(){
 
     case 1:
    
-    for(int i = 1; i <= 5; i++)
-    {
-        printf("Direita.\n", i);
-    }
+    moverTorre(5);
         
     break;
 
     case 2:
 
-        while (b <= 5)
-    {
-        printf("Cima, Direita.\n", b);
-        b++;
-    }
+    moverBispo(5);
 
     break;
 
     case 3:
 
-        do
-        {
-            printf("Esquerda.\n", r);
-            r++;
-        } while (r <= 8);
+    moverRainha(8);
 
     break;
 
     case 4:
 
-        for (int c = 1; c <= 1; c++)
-        {
-            while (i <= 2)
-            {
-                printf("Baixo\n");
-                i++;
-            }
-            
-            printf("Esquerda\n");
-        }
-
-
+    moverCavalo(1);
+    
     break;
     
     default:
